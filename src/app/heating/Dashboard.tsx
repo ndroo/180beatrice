@@ -8,7 +8,8 @@ import "./heating.css";
 export default function Dashboard() {
   useEffect(() => {
     const el = document.createElement("script");
-    el.src = "/heating-dashboard.js?v=" + (process.env.NEXT_PUBLIC_BUILD_ID || Date.now());
+    // served by the camera server (see the /heating rewrite in next.config.ts): one copy of the script
+    el.src = "/heating/dashboard.js?v=" + Date.now();
     document.body.appendChild(el);
     return () => { el.remove(); if (window.__heatTimer) clearInterval(window.__heatTimer); };
   }, []);
