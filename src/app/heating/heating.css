@@ -99,3 +99,16 @@
 .heatingDash .cam { padding: 0; overflow: hidden; }
 .heatingDash .cam h2 { padding: 12px 14px 0; }
 .heatingDash .cam .rows { padding: 6px 14px 10px; }
+
+/* Load-time placeholders (see markup.ts): reserve each section's final size so nothing shifts */
+.heatingDash .sk, .heatingDash .sk * { color: transparent !important; }
+.heatingDash .sk { background: var(--nodata); border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; animation: heatSk 1.4s ease-in-out infinite; }
+.heatingDash .pill.sk { background: var(--line); }
+@keyframes heatSk { 50% { opacity: .55; } }
+@media (prefers-reduced-motion: reduce) { .heatingDash .sk { animation: none; } }
+.heatingDash .banner.wait { display: block; background: var(--nodata); color: var(--muted); border: 1px solid var(--line); }
+/* the final banner usually wraps to two lines on a phone */
+@media (max-width: 560px) { .heatingDash .banner { min-height: 70px; } }
+/* the timeline SVG is a fixed height (lane heights don't depend on width): 554px with boiler, zone and thermostat data */
+.heatingDash #tl { min-height: 554px; }
+.heatingDash tr.ph td { height: 420px; text-align: center; vertical-align: middle; color: var(--muted); }
